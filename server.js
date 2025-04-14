@@ -8,7 +8,6 @@ app.use(bodyParser.json());
 
 // BBCode → HTML
 app.post('/bbcode-to-html', (req, res) => {
-  console.log('Incoming bbcode:', req.body);
   const { bbcode } = req.body;
 
   if (!bbcode || typeof bbcode !== 'string') {
@@ -17,6 +16,7 @@ app.post('/bbcode-to-html', (req, res) => {
 
   try {
     const html = bbcodeToHtml(bbcode);
+    console.log('Returned html:', html);
     res.json({ html });
   } catch (err) {
     res.status(500).json({
@@ -28,7 +28,6 @@ app.post('/bbcode-to-html', (req, res) => {
 
 // HTML → BBCode
 app.post('/html-to-bbcode', (req, res) => {
-  console.log('Incoming html:', req.body);
   const { html } = req.body;
 
   if (!html || typeof html !== 'string') {
