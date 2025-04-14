@@ -20,6 +20,7 @@ app.post('/bbcode-to-html', (req, res) => {
     console.log('Returned html:', html);
     res.json({ html });
   } catch (err) {
+    console.log('Returned error:', err);
     res.status(500).json({
       error: 'BBCode to HTML conversion failed',
       details: err.message
