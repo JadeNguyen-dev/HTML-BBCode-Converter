@@ -9,8 +9,9 @@ app.use(bodyParser.json());
 // BBCode → HTML
 app.post('/bbcode-to-html', (req, res) => {
   const { bbcode } = req.body;
-
+  console.log('Input bbcode:', bbcode);
   if (!bbcode || typeof bbcode !== 'string') {
+    
     return res.status(400).json({ error: 'Missing or invalid bbcode input' });
   }
 
