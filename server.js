@@ -16,7 +16,9 @@ app.post('/bbcode-to-html', (req, res) => {
   }
 
   try {
-    const html = bbcodeToHtml(bbcode);
+    const html = bbcodeToHtml(bbcode)
+    .replace(/\[ml\]/gi, '')         // remove [ml]
+    .replace(/\[\/ml\]/gi, '') ;
     console.log('Returned html:', html);
     res.json({ html });
   } catch (err) {
